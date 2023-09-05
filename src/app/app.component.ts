@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [
+    HomeComponent,
+  ],
   template: `<h1>Hello World!</h1>`,
   styleUrls: ['./app.component.css'],
 })
