@@ -49,7 +49,11 @@ import { HousingService } from '../housing.service';
   }
 
   constructor() {
-    this.housingLocationList = this.housingSerice.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocationList;
+    this.housingSerice.getAllHousingLocations().then(
+      (housingLocationList: HousingLocation[])=> {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    })
+
   }
 }

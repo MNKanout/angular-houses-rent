@@ -55,11 +55,15 @@ export class DetailsComponent {
   applyForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl(),
+    email: new FormControl(''),
   })
   constructor(){
-    const housingLocationid = Number(this.route.snapshot.params['id'])
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationid)
+    // Get house id from url
+    const housingLocationid = parseInt(this.route.snapshot.params['id'], 10);
+    // Get house details from server using injected housingService, then
+    // Update the choosen house variable to view its details.
+    this.housingService.getHousingLocationById(housingLocationid).then(
+      housingLocation => this.housingLocation = housingLocation);
   }
   submitApplication() {
     this.housingService.submitApplication(
